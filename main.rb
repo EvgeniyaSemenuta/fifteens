@@ -30,6 +30,11 @@ class Game
     end
 
     print
+    puts "Play more? yes-1/no-2"
+    answer = gets.chomp.to_i
+    if answer==1
+      start_play
+    end
   end
 
   private
