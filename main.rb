@@ -23,7 +23,7 @@ class Game
       shift @user_y, @empty_y, @user_x, @empty_x
     end
     if @user_y == @empty_y
-      shift @user_x, @empty_x, @user_y, @empty_y
+      hs @user_y, @empty_y, @user_x, @empty_x
     end
     if @user_x != @empty_x && @user_y != @empty_y
       puts "Wrong number!"
@@ -57,6 +57,20 @@ class Game
     end
       @game_field[n_i][n_j] = @empty_field
   end
+
+  def horisontal_shift n_i, empt_i, n_j, empt_j
+    if n_j>empt_j
+        razn = n_j - empt_j
+       for k in empt_j..n_j-1
+         @game_field[n_i][k] = @game_field[n_i][k+1]
+       end
+    else
+        razn = empt_j - n_j
+        empt_j.downto(n_j+1) do |k| @game_field[n_i][k] = @game_field[n_i][k-1] end
+    end
+      @game_field[n_i][n_j] = @empty_field
+  end
+  alias_method :hs, :horisontal_shift
 
   def fill_game_field start_array
     @game_field = []
