@@ -51,9 +51,9 @@ class Game
        for k in empt_i..n_i-1
          @game_field[k][n_j] = @game_field[k+1][n_j]
        end
-      else
+    else
         razn = empt_i - n_i
-        empt_i.downto(n_i-1) do |k| @game_field[k][n_j] = @game_field[k-1][n_j] end
+        empt_i.downto(n_i+1) do |k| @game_field[k][n_j] = @game_field[k-1][n_j] end
     end
       @game_field[n_i][n_j] = @empty_field
   end
