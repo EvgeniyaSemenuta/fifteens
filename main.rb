@@ -20,7 +20,7 @@ class Game
 
 
     if @user_x == @empty_x
-      shift @user_y, @empty_y, @user_x, @empty_x
+      vs @user_y, @empty_y, @user_x, @empty_x
     end
     if @user_y == @empty_y
       hs @user_y, @empty_y, @user_x, @empty_x
@@ -45,7 +45,7 @@ class Game
     end
   end
 
-  def shift n_i, empt_i, n_j, empt_j
+  def vertical_shift n_i, empt_i, n_j, empt_j
     if n_i>empt_i
         razn = n_i - empt_i
        for k in empt_i..n_i-1
@@ -57,6 +57,7 @@ class Game
     end
       @game_field[n_i][n_j] = @empty_field
   end
+  alias_method :vs, :vertical_shift
 
   def horisontal_shift n_i, empt_i, n_j, empt_j
     if n_j>empt_j
